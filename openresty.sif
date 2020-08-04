@@ -1,0 +1,21 @@
+BootStrap: debootstrap
+OSVersion: buster
+MirrorURL: http://ftp.us.debian.org/debian/
+
+%environment
+    LANG=C.UTF-8
+    LC_ALL=C.UTF-8
+
+%labels
+    name openresty 
+    maintainer jchassoul
+    version 0.1.0
+
+%post
+    apt-get -y install --no-install-recommends vim wget gnupg ca-certificates
+    wget -O - https://openresty.org/package/pubkey.gpg | apt-key add -
+    codename=`grep -Po 'VERSION="[0-9]+ \(\K[^)]+' /etc/os-release`
+    echo "deb http://openresty.org/package/debian $codename openresty" \
+    | sudo tee /etc/apt/sources.list.d/openresty.list
+    apt-get update
+    apt-get -y install --no-install-recommends openresty
