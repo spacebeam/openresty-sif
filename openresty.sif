@@ -19,3 +19,10 @@ MirrorURL: http://ftp.us.debian.org/debian/
     | tee /etc/apt/sources.list.d/openresty.list
     apt-get update
     apt-get -y install --no-install-recommends openresty
+
+%runscript
+    SIF_HOST=$(hostname -I)
+    echo 'hello' $SIF_HOST
+
+%startscript
+    service openresty start
