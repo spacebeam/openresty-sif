@@ -1,0 +1,16 @@
+tornado
+cython
+futures
+riak
+schematics==2.0.0a1
+psycopg2
+queries
+numpy
+scipy
+pyzmq
+Jinja2
+arrow
+pycurl
+ujson
+pylibmc
+msgpack-python
